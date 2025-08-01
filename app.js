@@ -164,9 +164,8 @@ const notionUpdate = (pageId, properties) => apiCall('/api/update',{ pageId, pro
 async function loadPreviousReps(exercise){
   try{
     showLoading(true);
-    const core = exercise.split(/[\s(]/)[0];
     const res  = await notionQuery({
-      filter:{property:'Exercise',title:{contains:core}},
+      filter:{property:'Exercise',title:{equals:exercise}},
       sorts :[{property:'Date',direction:'descending'}],
       page_size:1
     });
